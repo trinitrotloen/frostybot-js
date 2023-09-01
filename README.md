@@ -114,9 +114,6 @@ You will need to identify this account in Frostybot using what is called a stub.
 ```
 frostybot accounts:add stub=mystub exchange=binance apikey="<apikey>" secret="<secret>" subaccount="Algo-Trading"
 ```
-
-**Important:** On FTX, the subaccount parameter is case-sensitive and required if your are using a subaccount. It is not required for other exchanges. If using a subacocunt in FTX, make sure that it is exactly the same as the name on the exchange. The API keys will be tested with the exchange when you add them so you can be sure they work correctly. Once your API keys have been added, you're ready to start using Frostybot!
-
 ## Usage
 
 Frostybot can take orders from the commandline and from webhooks or API requests. The commandline commands are the same as the commands provided in a webhook. They can be provided in inline command format, or in JSON format. Lets go through a couple of inline commands so that you can get a feel for how it works. These commands can be supplied on your Linux commandline, or in the message box of a Tradingview alert:
