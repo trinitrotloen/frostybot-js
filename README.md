@@ -37,7 +37,7 @@ We kindly ask that you fully [**read the documentation**](https://github.com/Cry
 Use this API at your own risk. The authors accept no responsibility for losses incurred through using this software. This is a 0.x release which means it's beta software. So it may and probably will have some bugs. We strongly advise you to use a sub-account with a limited balance, or a testnet account to ensure that the bot is profitable before going live with any strategy. While we have gone to great lengths to test the software, if you do find any bugs, please report them to us in the [FrostyBot Discord Server](https://discord.gg/yK4U93s) or on Github, and we will sort them out. Remember that risk management is your responsibility. If you lose your account, that's entirely on you.
 
 ## Supported Exchanges
-Currently Bitmex, FTX, Deribit, Binance (Spot, Margin, USDT and Coin-M Futures) and BinanceUS are supported. But we will add support for others in the near future. 
+Currently Bitmex, Deribit, Binance (Spot, Margin, USDT and Coin-M Futures) and BinanceUS are supported. 
 
 ## Scope      
 This bot is specifically designed to execute orders based on webhook or REST API requests. These can be from Tradingview, or any other software that can execute webhooks.
@@ -71,7 +71,7 @@ If you would like to monitor the install progress, you can tail the installer lo
 
 #### Option 2 - Use Docker
 
-If you would prefer to use Docker, the latest docker image is available at **frostyio/frostybot-js:latest**
+If you would prefer to use Docker, the latest docker image is available at **emreyavuz84/frostybot-js:latest**
 
 The following Docker environment variables are available:
 
@@ -112,7 +112,7 @@ You will then be able to browse to http://\<your vps ip\> and login to the GUI. 
 
 You will need to identify this account in Frostybot using what is called a stub. It is a lowercase single word to name the account in Frostybot. You will use this stub in all subsequent interactions with the exchange. For example, if your exchange subaccount is called "Algo"-Trading"", add your API keys using this command:
 ```
-frostybot accounts:add stub=mystub exchange=ftx apikey="<apikey>" secret="<secret>" subaccount="Algo-Trading"
+frostybot accounts:add stub=mystub exchange=binance apikey="<apikey>" secret="<secret>" subaccount="Algo-Trading"
 ```
 
 **Important:** On FTX, the subaccount parameter is case-sensitive and required if your are using a subaccount. It is not required for other exchanges. If using a subacocunt in FTX, make sure that it is exactly the same as the name on the exchange. The API keys will be tested with the exchange when you add them so you can be sure they work correctly. Once your API keys have been added, you're ready to start using Frostybot!
@@ -153,10 +153,10 @@ For more advanced usage, check out the documentation on our [Wiki](https://githu
 
 If you love our work, show us some love:
 
-* **BTC:** 3QV4xXXDSAXm31kLZHRFrznoS7Qv8BWAri
-* **ETH:** 0xBd6E3c74024B021b5c94eEF8EB8e5bEEF04b57aD
-* **LTC:** ML7A2xDMegLMPd8VqHCJyAG21U981boA5F
+* **BTC:** 1Lfg7JXGnH3SuK5k3JuTUZEg2hoZSPyMSY
+* **ETH:** 0x21596bd4ddc30b28a07214aa26d9ad5b9ec8b8fb
+* **LTC:** 0x21596bd4ddc30b28a07214aa26d9ad5b9ec8b8fb
  
 ## Report Bugs
 
-If you find a bug in the software, kindly report it [here](https://github.com/CryptoMF/frostybot-js/issues/new) so that we can properly track it.
+If you find a bug in the software, kindly report it [here](https://github.com/trinitrotloen/frostybot-js/issues/new) so that we can properly track it.
