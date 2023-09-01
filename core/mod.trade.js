@@ -1724,13 +1724,22 @@ module.exports = class frostybot_trade_module extends frostybot_module {
         }
 
         if (!(params = this.utils.validator(params, schema))) return false; 
-
+        var ct=0
         const stub = params.stub
         var result = await this.exchange_execute(stub, 'position',params);
         if (!this.utils.is_array(result)) {
             this.output.success('position_retrieve', result.symbol)
-        } else {
-            this.output.error('position_retrieve', this.utils.serialize( this.utils.remove_props(params, ['stub']) ))
+        } else  {
+            while (this.utils.is_array(result) && ct < 20) {
+                result = await this.exchange_execute(stub, 'position', params);
+		ct++;
+            }
+	    if (!this.utils.is_array(result) && ct < 20) {
+                this.output.success('position_retrieve',result.symbol)
+		this.output.notice('retry_count',ct)
+            } else {
+               this.output.error('position_retrieve', this.utils.serialize( this.utils.remove_props(params, ['stub']) ))
+            }
         }
         return result;
     }
@@ -1745,7 +1754,7 @@ module.exports = class frostybot_trade_module extends frostybot_module {
         }
 
         if (!(params = this.utils.validator(params, schema))) return false; 
-
+        var ct = 0
         const stub = params.stub
         var result = await this.exchange_execute(stub, 'positions', params);
         if (this.utils.is_array(result)) {
@@ -1754,9 +1763,19 @@ module.exports = class frostybot_trade_module extends frostybot_module {
             result.forEach(position => {
                 this.output.debug('custom_object', [position.symbol, position]);
             });
-            */
+           */
         } else {
-            this.output.error('positions_retrieve')
+            while (!this.utils.is_array(result) && ct < 20) {
+                result = await this.exchange_execute(stub, 'positions', params);
+		ct++;
+            }
+	    if (this.utils.is_array(result) && ct < 20) {
+                this.output.success('positions_retrieve',result.length)
+		this.output.notice('retry_count',ct)
+
+            } else {
+                this.output.error('positions_retrieve')
+            }
         }
         return result;
     }

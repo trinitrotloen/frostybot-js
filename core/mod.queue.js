@@ -121,7 +121,7 @@ module.exports = class frostybot_queue_module extends frostybot_module {
         var uuid = context.get('reqId')
         this.create(stub, symbol)
         var noexecute = await this.config.get('debug:noexecute', false);
-        var maxretry = parseInt(await this.config.get(stub + ':maxretry', 5));
+        var maxretry = parseInt(await this.config.get(stub + ':maxretry', 20));
         var retrywait = parseInt(await this.config.get(stub + ':retrywait', 10));
         if (noexecute == true) {
             this.output.debug('debug_noexecute');
@@ -146,7 +146,10 @@ module.exports = class frostybot_queue_module extends frostybot_module {
                         this.output.warning('order_retry_wait', [retrywait])
                         await this.utils.sleep(retrywait)
                         this.output.warning('order_retry_num', [retry, maxretry])                
-                    } else break
+                    } else {
+                        this.output.notice('retry_count',retry)
+                        break
+                    }
                 }
                 
                 
