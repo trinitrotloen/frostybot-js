@@ -95,7 +95,7 @@ module.exports = {
         database_type:      'Database Type:  {0}',
         database_name:      'Database Name:  {0}',
         position_nopotential:'No open positions or orders on {0}',
-
+	retry_count:	    'Number of retry count is {0}',
     },
 
     warning: {
